@@ -1,7 +1,7 @@
-# mcp-irc-ts
+# mcp-bsky-jetstream-ts
 MCP Server listening to the Bluesky Jetstream in Typescript. Allows an MCP client to consume the entire Bluesky firehose in realtime.
 
-# Launching the MCP server and IRC Client
+# Launching the MCP server and Jetstream client
 
 ```
 node index.ts --mcpPort 3000 -n 1000
