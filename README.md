@@ -4,7 +4,7 @@ MCP Server listening to the Bluesky Jetstream in Typescript. Allows an MCP clien
 # Launching the MCP server and Jetstream client
 
 ```
-node index.ts --mcpPort 3000 -n 1000
+npx mcp-bsky-jetstream --mcpPort 3000 -n 1000
 ```
 
 # Using the MCP server
