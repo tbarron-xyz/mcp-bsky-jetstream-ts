@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /* eslint @typescript-eslint/no-explicit-any: 0 */
 /* eslint no-empty-pattern: 0 */
 
