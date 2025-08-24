@@ -7,10 +7,10 @@ import express from "express";
 import { v4 } from "uuid";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
-import {  isInitializeRequest } from "@modelcontextprotocol/sdk/types.js"
+import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js"
 import { z } from "zod";
 import minimist from 'minimist';
-import { Jetstream } from "@skyware/jetstream";
+import { TinyJetstream as Jetstream } from 'mbjc/tinyjetstream.min.js';
 
 const argv = minimist(process.argv.slice(2));
 
@@ -25,7 +25,8 @@ const jetstream = new Jetstream({
 
 const lastMessages: {}[] = []; // this could be redis
 
-jetstream.onCreate("app.bsky.feed.post", (event) => {
+// jetstream.onCreate("app.bsky.feed.post", (event) => {
+jetstream.onTweet = (event: { did: string, commit: { record: { text: string }}}) => {
     const text = event.commit.record.text;
     const did = event.did;
     lastMessages.unshift({
@@ -33,20 +34,21 @@ jetstream.onCreate("app.bsky.feed.post", (event) => {
     });
     lastMessages.splice(argv["n"] || 100);
     console.log(did + ': ' + text);
-});
+};
+// });
 
-jetstream.on("open", () => {
-    console.log("open");
-});
+// jetstream.on("open", () => {
+//     console.log("open");
+// });
 
-jetstream.on("close", () => {
-    console.log("close");
-});
+// jetstream.on("close", () => {
+//     console.log("close");
+// });
 
-jetstream.on("error", event => {
-    console.log("error");
-    console.log(event);
-});
+// jetstream.on("error", event => {
+//     console.log("error");
+//     console.log(event);
+// });
 
 console.log("constructed");
 jetstream.start();
