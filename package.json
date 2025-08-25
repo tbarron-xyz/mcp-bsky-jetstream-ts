@@ -1,7 +1,7 @@
 {
   "name": "mcp-bsky-jetstream",
-  "version": "1.0.2",
-  "description": "",
+  "version": "1.0.1",
+  "description": "MCP server for reading a Bluesky Jetstream client",
   "license": "UNLICENSED",
   "author": "",
   "type": "module",
