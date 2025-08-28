@@ -33,7 +33,9 @@ jetstream.onTweet = (event: { did: string, commit: { record: { text: string }}})
         did: did, text: text, time: Date.now()
     });
     lastMessages.splice(argv["n"] || 100);
-    console.log(did + ': ' + text);
+    if (!argv["silent"]) {
+        console.log(did + ': ' + text);
+    }
 };
 // });
 
