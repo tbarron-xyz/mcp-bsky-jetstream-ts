@@ -1,0 +1,28 @@
+{
+  "name": "mcp-bsky-jetstream-client",
+  "version": "1.0.0",
+  "description": "MCP client for consuming the Bluesky jetstream MCP server",
+  "license": "UNLICENSED",
+  "author": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./McpBskyClient": "./dist/McpBskyClient.js"
+  },
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsx index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.3",
+    "@types/node": "^24.3.0",
+    "minimist": "^1.2.8"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
